@@ -47,7 +47,7 @@ if __name__ == "__main__":
     print("number of rows:",count)
     train_count = 300
     mid_dir = "/train"
-    path = output_dir+mid_dir+'/image_'
+    path = output_dir+"/images"+mid_dir+'/image_'
     count = 1
     for image_data in jsonData:
         url = image_data['content']
@@ -58,7 +58,7 @@ if __name__ == "__main__":
         count +=1
         if(count==300):
             mid_dir = "/test"
-            path = output_dir+mid_dir+'/image_'
+            path = output_dir+"/images"+mid_dir+'/image_'
     from_range = 1
     to_range = 409
     filename = 'trainval.txt'
@@ -74,10 +74,10 @@ if __name__ == "__main__":
     #For testset use from_range = 301 to_range=409 filename = test_label.csv
     from_range = 1
     to_range = 300
-    filename = 'train_label.csv'
+    #filename = 'train_label.csv'
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     output_df_list = []
-    path = output_dir+'/images/train/image_'
+    #path = output_dir+'/images/train/image_'
     count = 1
     for i in range(from_range,to_range):
         #print(i)
@@ -109,11 +109,11 @@ if __name__ == "__main__":
 
     from_range = 301
     to_range = 409
-    filename = 'test_label.csv'
+    #filename = 'test_label.csv'
 
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     output_df_list = []
-    path = output_dir+'/images/test/image_'
+    #path = output_dir+'/images/test/image_'
     count = 1
     for i in range(from_range,to_range):
         #print(i)
