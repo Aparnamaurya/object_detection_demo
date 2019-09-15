@@ -45,7 +45,7 @@ if __name__ == "__main__":
             jsonData.append(json.loads(str(line.strip())))
             
     print("number of rows:",count)
-    train_count = 300
+    '''train_count = 300
     mid_dir = "/train"
     path = output_dir+"/images"+mid_dir+'/image_'
     count = 1
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         for count in range(1,409):
             file.write("image_"+str(count)+"\n")
             count = count+1
-    
+    '''
     #Creating train images set
     #create the dataframe in required format
     #For trainSet use from_range= 1 to_range=300 filename = train_label.csv
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     os.makedirs(os.path.dirname(output_dir+"/annotations/"), exist_ok=True)
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     output_df_list = []
-    #path = output_dir+'/images/train/image_'
+    path = output_dir+'/images/train/image_'
     count = 1
     for i in range(from_range,to_range):
         #print(i)
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     output_df_list = []
-    #path = output_dir+'/images/test/image_'
+    path = output_dir+'/images/test/image_'
     count = 1
     for i in range(from_range,to_range):
         #print(i)
