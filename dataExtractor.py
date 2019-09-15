@@ -32,20 +32,21 @@ if __name__ == "__main__":
         default="./data/output",
         type=str,
     )
+    parser.add_argument( "--train_count", help="Training examples", default=300,type=int)
     args = parser.parse_args()
     save_dir = args.save_dir
     output_dir = args.output_dir
-    
+    train_count = args.train_count
     filename = 'data_images.json'
     jsonData =[]
-    count =0
+    row_count =0
     with open(filename, "r") as jsonfile:
         for line in jsonfile:
             count +=1
             jsonData.append(json.loads(str(line.strip())))
             
-    print("number of rows:",count)
-    train_count = 300
+    print("number of rows:",row_count)
+    
     mid_dir = "/train"
     path = output_dir+"/images"+mid_dir+'/image_'
     count = 1
@@ -56,15 +57,15 @@ if __name__ == "__main__":
         with open(path+str(count)+'.'+ext,'wb') as f: 
             f.write(r.content)
         count +=1
-        if(count==300):
+        if(count==train_count):
             mid_dir = "/test"
             path = output_dir+"/images"+mid_dir+'/image_'
     from_range = 1
-    to_range = 409
+    to_range = row_count
     filename = 'trainval.txt'
     count = 1
     with open(output_dir+filename, 'w') as file:
-        for count in range(1,409):
+        for count in range(1,row_count):
             file.write("image_"+str(count)+"\n")
             count = count+1
     
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     #For trainSet use from_range= 1 to_range=300 filename = train_label.csv
     #For testset use from_range = 301 to_range=409 filename = test_label.csv
     from_range = 1
-    to_range = 300
+    to_range = train_count
     #filename = 'train_label.csv'
     os.makedirs(os.path.dirname(output_dir+"/annotations/"), exist_ok=True)
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
@@ -108,8 +109,8 @@ if __name__ == "__main__":
     #For trainSet use from_range= 1 to_range=300 filename = train_label.csv
     #For testset use from_range = 301 to_range=409 filename = test_label.csv
 
-    from_range = 301
-    to_range = 409
+    from_range = train_count
+    to_range = row_count
     #filename = 'test_label.csv'
 
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
