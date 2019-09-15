@@ -45,7 +45,7 @@ if __name__ == "__main__":
             jsonData.append(json.loads(str(line.strip())))
             
     print("number of rows:",count)
-    '''train_count = 300
+    train_count = 300
     mid_dir = "/train"
     path = output_dir+"/images"+mid_dir+'/image_'
     count = 1
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         for count in range(1,409):
             file.write("image_"+str(count)+"\n")
             count = count+1
-    '''
+    
     #Creating train images set
     #create the dataframe in required format
     #For trainSet use from_range= 1 to_range=300 filename = train_label.csv
