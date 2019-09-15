@@ -75,6 +75,7 @@ if __name__ == "__main__":
     from_range = 1
     to_range = 300
     #filename = 'train_label.csv'
+    os.makedirs(os.path.dirname(output_dir+"/annotations/"), exist_ok=True)
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     output_df_list = []
     #path = output_dir+'/images/train/image_'
@@ -137,6 +138,15 @@ if __name__ == "__main__":
             if(width >0 and height > 0):
                 image_list = [path+str(i)+"."+ext, width,height,'face',xmin,ymin,xmax,ymax]
                 output_df_list.append(image_list)
-
+    
     xml_df = pd.DataFrame(output_df_list, columns=column_name)
     xml_df.to_csv(output_dir+"/annotations/test.csv", index=None)
+    
+    pbtxt_content = ""
+    classes_name = ["face"]
+    label_map_path = output_dir+"/annotations/label_map.pbtxt"
+    for i, class_name in enumerate(classes_names):
+        pbtxt_content = ( pbtxt_content + "item {{\n    id: {0}\n    name: '{1}'\n}}\n\n".format( i + 1, class_name))
+        pbtxt_content = pbtxt_content.strip()
+        with open(label_map_path, "w") as f:
+            f.write(pbtxt_content)
