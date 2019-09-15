@@ -42,7 +42,7 @@ if __name__ == "__main__":
     row_count =0
     with open(filename, "r") as jsonfile:
         for line in jsonfile:
-            count +=1
+            row_count +=1
             jsonData.append(json.loads(str(line.strip())))
             
     print("number of rows:",row_count)
