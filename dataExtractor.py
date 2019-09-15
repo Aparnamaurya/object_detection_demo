@@ -143,7 +143,7 @@ if __name__ == "__main__":
     xml_df.to_csv(output_dir+"/annotations/test.csv", index=None)
     
     pbtxt_content = ""
-    classes_name = ["face"]
+    classes_names = ["face"]
     label_map_path = output_dir+"/annotations/label_map.pbtxt"
     for i, class_name in enumerate(classes_names):
         pbtxt_content = ( pbtxt_content + "item {{\n    id: {0}\n    name: '{1}'\n}}\n\n".format( i + 1, class_name))
