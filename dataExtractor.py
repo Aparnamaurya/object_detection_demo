@@ -101,10 +101,10 @@ if __name__ == "__main__":
             height = ymax-ymin
             #print(width,height)
             if(width >0 and height > 0):
-                image_list = [path+str(i)+"."+ext, width,height,'face',xmin,ymin,xmax,ymax]
+                image_list = ["image_"+str(i)+"."+ext, width,height,'face',xmin,ymin,xmax,ymax]
                 output_df_list.append(image_list)
     xml_df = pd.DataFrame(output_df_list, columns=column_name)
-    xml_df.to_csv(output_dir+"/annotations/train.csv", index=None)
+    xml_df.to_csv(output_dir+"/annotations/train_labels.csv", index=None)
     #create the dataframe in required format
     #For trainSet use from_range= 1 to_range=300 filename = train_label.csv
     #For testset use from_range = 301 to_range=409 filename = test_label.csv
@@ -137,11 +137,11 @@ if __name__ == "__main__":
             height = ymax-ymin
             #print(width,height)
             if(width >0 and height > 0):
-                image_list = [path+str(i)+"."+ext, width,height,'face',xmin,ymin,xmax,ymax]
+                image_list = ["image_"+str(i)+"."+ext, width,height,'face',xmin,ymin,xmax,ymax]
                 output_df_list.append(image_list)
     
     xml_df = pd.DataFrame(output_df_list, columns=column_name)
-    xml_df.to_csv(output_dir+"/annotations/test.csv", index=None)
+    xml_df.to_csv(output_dir+"/annotations/test_labels.csv", index=None)
     
     pbtxt_content = ""
     classes_names = ["face"]
